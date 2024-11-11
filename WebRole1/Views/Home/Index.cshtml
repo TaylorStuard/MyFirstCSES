@@ -1,0 +1,19 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";  // Usa el layout correcto.
+}
+
+<main>
+    <!-- Contenido de la página Home -->
+    <div class="intro">
+        <h1 class="welcome-title">Welcome to the Cloud Service world!</h1>
+        <p class="welcome-text">Explore the amazing world of cloud computing and how it can help you scale, grow, and innovate!</p>
+        <button onclick="location.href='@Url.Action("Info", "Home")'" class="btn-flag">
+            <i class="fas fa-flag"></i> Flag
+        </button>
+    </div>
+</main>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+}

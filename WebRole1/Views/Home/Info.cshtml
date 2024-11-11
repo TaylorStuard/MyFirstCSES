@@ -1,0 +1,46 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";  // Usa el layout correcto.
+}
+
+<main>
+    <!-- Contenido de la página Info -->
+    <div class="intro">
+        <h1 class="welcome-title">Congratulations, you have found your first Cloud Service flag!</h1>
+        <p class="welcome-text">Here is some additional information about your flag!</p>
+
+        <!-- Botón que al hacer clic mostrará información adicional -->
+        <button id="showInfoButton" class="btn-flag">
+            <i class="fas fa-flag"></i> Show Information
+        </button>
+
+        <!-- Información adicional oculta por defecto -->
+        <div id="FlagInfo" class="info-box" style="display: none; margin-top: 20px;">
+            <h3>Your Flag:</h3>
+            <p>CSES_FLAG_DEVELOPER_1911</p>
+        </div>
+    </div>
+</main>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+
+    <script>
+        // Obtener el botón y el div que contiene la información adicional
+        var button = document.getElementById("showInfoButton");
+        var infoDiv = document.getElementById("FlagInfo");
+
+        // Agregar un event listener para mostrar u ocultar la información al hacer clic
+        button.onclick = function () {
+            // Si la información está oculta, mostrarla
+            if (infoDiv.style.display === "none") {
+                infoDiv.style.display = "block";
+                button.textContent = "Hide Information";  // Cambiar el texto del botón
+            } else {
+                // Si la información está visible, ocultarla
+                infoDiv.style.display = "none";
+                button.textContent = "Show Information";  // Cambiar el texto del botón
+            }
+        };
+    </script>
+}

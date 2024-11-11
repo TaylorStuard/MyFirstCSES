@@ -1,0 +1,55 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - @ViewBag.ApplicationName</title>
+
+    @Styles.Render("~/Content/css")  <!-- Estilos generales -->
+    @RenderSection("Styles", required: false) <!-- Si hay estilos adicionales desde la vista -->
+
+    @Scripts.Render("~/bundles/modernizr") <!-- Scripts para Modernizr -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
+</head>
+<body style="display: flex; flex-direction: column; min-height: 100vh;">
+
+    <!-- Barra de navegación -->
+    <nav class="navbar navbar-expand-sm navbar-dark" style="background: rgba(0, 0, 128, 0.8); box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); transition: all 0.3s ease;">
+        <div class="container">
+            <a href="@Url.Action("Index", "Home")" class="navbar-brand d-flex align-items-center">
+                <img src="https://logos-world.net/wp-content/uploads/2021/03/Azure-Logo-2020-present.png" alt="Azure Logo" style="height: 40px; margin-right: 10px;">
+                <span>My First Cloud Service</span>
+            </a>
+            <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" title="Toggle navigation" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse d-sm-inline-flex justify-content-center">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        @Html.ActionLink("Home", "Index", "Home", new { area = "" }, new { @class = "nav-link" })
+                    </li>
+                    <li class="nav-item">
+                        @Html.ActionLink("Information", "Info", "Home", new { area = "" }, new { @class = "nav-link" })
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Contenido de la página -->
+    <div class="container body-content" style="flex: 1;">
+        @RenderBody() <!-- Aquí se renderiza el contenido específico de cada vista (como Index.cshtml) -->
+    </div>
+
+    <!-- Pie de página -->
+    <footer class="text-center mt-5" style="background: #f1f1f1; padding: 10px;">
+        <p>&copy; @DateTime.Now.Year - @ViewBag.ApplicationName</p>
+    </footer>
+
+    @Scripts.Render("~/bundles/jquery") <!-- Scripts para jQuery -->
+    @Scripts.Render("~/bundles/bootstrap") <!-- Scripts para Bootstrap -->
+    <script src="~/Scripts/navbar.js"></script> <!-- Agregar navbar.js -->
+    @RenderSection("scripts", required: false) <!-- Esto asegura que si hay scripts adicionales, se carguen -->
+</body>
+</html>
